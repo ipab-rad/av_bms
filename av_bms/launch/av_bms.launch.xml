@@ -1,0 +1,11 @@
+<launch>
+  <group>
+    <push-ros-namespace namespace="bms"/>
+    <node_container pkg="rclcpp_components" exec="component_container" name="bms_container" namespace="">
+      <composable_node pkg="av_bms" plugin="bms::BMS_node" name="bms_node" namespace="">
+        <param name="input_topic" value="/can_bus_2/can_rx"/>
+        <param name="output_topic" value="/sensor/bms/battery_state"/>
+      </composable_node>
+    </node_container>
+  </group>
+</launch>
